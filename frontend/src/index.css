@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens (used in plain CSS below) ────────────────────────────── */
+:root {
+  --color-brand-red:        #dc2626;
+  --color-brand-red-dark:   #b91c1c;
+  --color-brand-green:      #16a34a;
+  --color-brand-green-dark: #15803d;
+  --color-brand-green-bg:   #f0fdf4;
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-white text-gray-900 font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 { @apply font-display; }
+}
+
+@layer components {
+
+  /* ── Primary CTA — green ─────────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-lg
+           transition-all duration-200 shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+    background-color: var(--color-brand-green);
+    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-brand-green-dark);
+  }
+
+  /* ── Secondary — ghost on dark backgrounds ───────────────────────────── */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white
+           font-semibold px-6 py-3 rounded-lg border border-white/30
+           transition-all duration-200 backdrop-blur-sm;
+  }
+
+  /* ── Outline — green border ──────────────────────────────────────────── */
+  .btn-outline {
+    @apply inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-lg
+           border-2 transition-all duration-200;
+    border-color: var(--color-brand-green);
+    color: var(--color-brand-green);
+  }
+  .btn-outline:hover {
+    background-color: var(--color-brand-green);
+    @apply text-white;
+  }
+
+  /* ── Outline dark — for light hero backgrounds ───────────────────────── */
+  .btn-outline-dark {
+    @apply inline-flex items-center gap-2 border-2 border-gray-800 text-gray-800
+           hover:bg-gray-800 hover:text-white font-semibold px-6 py-3 rounded-lg
+           transition-all duration-200;
+  }
+
+  /* ── WhatsApp ─────────────────────────────────────────────────────────── */
+  .btn-whatsapp {
+    @apply inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white
+           font-semibold px-5 py-2.5 rounded-lg transition-all duration-200
+           shadow-md hover:-translate-y-0.5;
+  }
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+  .section-heading {
+    @apply text-3xl md:text-4xl font-display font-bold text-gray-900;
+  }
+  .section-subheading {
+    @apply text-gray-500 text-lg mt-3 max-w-2xl;
+  }
+
+  /* ── Card ────────────────────────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300;
+  }
+
+  /* ── Tag / badge ─────────────────────────────────────────────────────── */
+  .tag {
+    @apply inline-block bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full;
+  }
+
+  /* ── Form fields ─────────────────────────────────────────────────────── */
+  .input-field {
+    @apply w-full border border-gray-300 rounded-lg px-4 py-3
+           text-gray-900 placeholder-gray-400
+           transition-all duration-200;
+    outline: none;
+  }
+  .input-field:focus {
+    border-color: var(--color-brand-green);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+  }
+
+  .select-field {
+    @apply w-full border border-gray-300 rounded-lg px-4 py-3
+           text-gray-900 bg-white appearance-none
+           transition-all duration-200;
+    outline: none;
+  }
+  .select-field:focus {
+    border-color: var(--color-brand-green);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+  }
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Red-to-green gradient text for hero headline accent */
+  .text-gradient {
+    background: linear-gradient(135deg, #dc2626 0%, #16a34a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass card for overlays */
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+}
+
+/* ─── Scrollbar — green thumb ────────────────────────────────────────────── */
+::-webkit-scrollbar              { width: 6px; }
+::-webkit-scrollbar-track        { background: #f1f5f9; }
+::-webkit-scrollbar-thumb        { background: #16a34a; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover  { background: #15803d; }
