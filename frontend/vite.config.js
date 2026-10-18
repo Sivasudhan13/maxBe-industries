@@ -9,7 +9,7 @@ export default defineConfig({
       // Proxy all /api calls to the backend — except the browser-extension
       // noise route that causes ECONNREFUSED when backend isn't running.
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://maxbe-industries.onrender.com',
         changeOrigin: true,
         // Return a harmless 204 for noisy extension/tool routes so the
         // dev console stays clean when the backend isn't running yet.
